@@ -1,4 +1,4 @@
-package Logic;
+package Core;
 
 public class Player {
     private String name;

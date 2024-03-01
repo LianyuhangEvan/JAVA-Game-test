@@ -1,4 +1,4 @@
-package Logic;
+package Core;
 
 public class Gems {
     private int number; // 宝石数量

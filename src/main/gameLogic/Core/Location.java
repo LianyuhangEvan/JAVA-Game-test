@@ -1,4 +1,4 @@
-package Logic;
+package Core;
 
 public class Location {
     private double X;
