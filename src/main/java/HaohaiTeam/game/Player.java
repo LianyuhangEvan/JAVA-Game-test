@@ -1,4 +1,4 @@
-package Core;
+package HaohaiTeam.game;
 
 public class Player {
     private String name;

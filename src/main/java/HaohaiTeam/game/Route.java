@@ -1,8 +1,9 @@
-package Core;
+package HaohaiTeam.game;
 
 import java.util.List;
 
 public class Route {
+
     private Location source;
     private Location destination;
     private List<TransportMode> transportModes;

@@ -1,4 +1,4 @@
-package Ui;
+package HaohaiTeam.Ui;
 
 public class StartingScreen {
 }

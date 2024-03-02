@@ -1,4 +1,4 @@
-package Core;
+package HaohaiTeam.game;
 
 public class Location {
     private double X;

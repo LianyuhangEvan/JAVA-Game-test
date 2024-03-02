@@ -1,4 +1,4 @@
-package Core;
+package HaohaiTeam.game;
 
 public abstract class TransportMode {
     protected double distance; // 行驶距离
