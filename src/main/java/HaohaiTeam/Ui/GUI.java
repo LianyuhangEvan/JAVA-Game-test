@@ -1,14 +1,17 @@
 package HaohaiTeam.Ui;
 
+import HaohaiTeam.game.Location;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class GUI extends JFrame {
     private Map gameMap; // 游戏地图
-    private JButton playButton; // 游戏开始按钮
+    JButton playButton; // 游戏开始按钮
     private Player player; // 玩家对象
 
+    private MapPanel mapPanel;
     public GUI() {
         setTitle("Shared-Mobility Adventure Game");
         setSize(800, 600);
@@ -24,7 +27,7 @@ public class GUI extends JFrame {
     }
 
     private void initGame() {
-        gameMap = new Map(10, 10, 50); // 示例尺寸
+        gameMap = new Map(10, 10, 50, mapPanel); // 示例尺寸
         player = new Player(gameMap); // 初始化玩家对象
     }
 
@@ -63,6 +66,7 @@ public class GUI extends JFrame {
         }
 
         // 在这里需要更新地图面板以显示新的玩家位置
+        mapPanel.refreshPlayerLocation(new Location(player.position.x, player.position.y)); // 假设Location类有一个合适的构造函数
         repaint();
     }
 
@@ -84,15 +88,19 @@ public class GUI extends JFrame {
     }
 
     // 更新MapPanel类以包含玩家对象并根据玩家位置绘制
-    class MapPanel extends JPanel {
-        private Map gameMap;
-        private Player player;
+    static class MapPanel extends JPanel {
+        private final Map gameMap;
+        private final Player player;
 
         public MapPanel(Map gameMap, Player player) {
             this.gameMap = gameMap;
             this.player = player;
         }
 
+        public void refreshPlayerLocation(Location location) {
+            this.playerPosition = location; // 假设有一个成员变量 playerPosition 来存储当前玩家位置
+            repaint(); // 重绘组件以显示新位置
+        }
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
