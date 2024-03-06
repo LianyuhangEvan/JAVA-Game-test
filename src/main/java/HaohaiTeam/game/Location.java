@@ -13,6 +13,8 @@ public class Location {
         this.name = name;
     }
 
+
+
     // Existing getters and setters for X, Y, and size
 
     public double getX() {

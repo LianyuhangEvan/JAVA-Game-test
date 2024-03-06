@@ -7,7 +7,7 @@ public class Map {
     private final int height; // 地图高度
     private final int tileSize; // 单元格大小
     private final int[][] mapData; // 地图数据（二维数组）
-    private GUI.MapPanel mapPanel;
+    private MapPanel mapPanel;
 
     public enum TileType {
         EMPTY_SPACE(true),
@@ -27,7 +27,7 @@ public class Map {
         }
     }
 
-    public Map(int width, int height, int tileSize, GUI.MapPanel mapPanel) {
+    public Map(int width, int height, int tileSize, MapPanel mapPanel) {
         this.width = width;
         this.height = height;
         this.tileSize = tileSize;

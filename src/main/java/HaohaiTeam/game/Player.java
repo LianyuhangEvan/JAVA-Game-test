@@ -2,6 +2,9 @@ package HaohaiTeam.game;
 
 import HaohaiTeam.Ui.Map;
 import HaohaiTeam.Ui.GUI;
+import HaohaiTeam.Ui.MapPanel;
+// 定义一个事件监听器接口
+
 public class Player {
     private final String name;
     private int score;
@@ -9,9 +12,10 @@ public class Player {
     private int gems;
     private double speed;
     private Location Player_location;
-    private final Map gameMap; // 添加游戏地图引用
+    private final Map gameMap;
+    private PlayerListener listener; // 用于回调GUI
 
-    public Player(String name, int score, int level, int gems, double speed, Location Player_location, Map gameMap) {
+    public Player(String name, int score, int level, int gems, double speed, Location Player_location, Map gameMap, PlayerListener listener) {
         this.name = name;
         this.score = score;
         this.level = level;
@@ -19,8 +23,8 @@ public class Player {
         this.speed = speed;
         this.Player_location = Player_location;
         this.gameMap = gameMap;
+        this.listener = listener;
         System.out.println("Player created");
-
     }
 
     public String getName() {
@@ -81,17 +85,17 @@ public class Player {
         if (gameMap.isPositionValid(newX, newY)) {
             Player_location.setX(newX);
             Player_location.setY(newY);
+            // 通知监听器玩家已移动
+            if (listener != null) {
+                listener.onPlayerMoved(Player_location);
+            }
         } else {
             System.out.println("Invalid move! The new position is out of bounds or contains an obstacle.");
         }
 
-        GUI gui = getGuiInstance(); // 获取GUI实例的方式取决于您的具体实现
-        if (gui != null) {
-            gui.updateMap();
-        }
+
     }
 
 
-
-
 }
+
